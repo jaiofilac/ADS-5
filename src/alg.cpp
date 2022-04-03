@@ -61,7 +61,7 @@ std::string infx2pstfx(std::string inf) {
 
 int eval(std::string pref) {
     TStack<int, 100> intStack;
-    string numberString = "";
+    std::string numberString = "";
     bool isNum = false;
 
     for (int i = 0; i < pref.length(); i++) {
