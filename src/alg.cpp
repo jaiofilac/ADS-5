@@ -22,7 +22,7 @@ std::string infx2pstfx(std::string inf) {
         if (priority(inf[i]) == -1) {
             result += inf[i];
         } else if (priority(inf[i]) > 1 && priority(inf[i]) < 4) {
-            if (symbolStack.isEmpty() || priority(symbolStack.get()) == 0 
+            if (symbolStack.isEmpty() || priority(symbolStack.get()) == 0
                 || (priority(inf[i]) > priority(symbolStack.get()))) {
                 symbolStack.push(inf[i]);
                 result += " ";
