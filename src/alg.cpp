@@ -3,8 +3,6 @@
 #include <map>
 #include "tstack.h"
 
-using namespace std;
-
 int priority(char symbol) {
     switch (symbol) {
         case '(': return 0;
@@ -17,14 +15,15 @@ int priority(char symbol) {
     }
 }
 
-string infx2pstfx(string inf) {
-    string result = "";
+std::string infx2pstfx(std::string inf) {
+    std::string result = "";
     TStack <char, 100> symbolStack;
     for (int i = 0; i < inf.length(); i++) {
         if (priority(inf[i]) == -1) {
             result += inf[i];
         } else if (priority(inf[i]) > 1 && priority(inf[i]) < 4) {
-            if (symbolStack.isEmpty() || priority(symbolStack.get()) == 0 || (priority(inf[i]) > priority(symbolStack.get()))) {
+            if (symbolStack.isEmpty() || priority(symbolStack.get()) == 0 
+                || (priority(inf[i]) > priority(symbolStack.get()))) {
                 symbolStack.push(inf[i]);
                 result += " ";
             } else if (priority(inf[i]) <= priority(symbolStack.get())) {
@@ -60,7 +59,7 @@ string infx2pstfx(string inf) {
     return result;
 }
 
-int eval(string pref) {
+int eval(std::string pref) {
     TStack<int, 100> intStack;
     string numberString = "";
     bool isNum = false;
@@ -69,8 +68,7 @@ int eval(string pref) {
         if (pref[i] <= '9' && pref[i] >= '0') {
             isNum = true;
             numberString += pref[i];
-        }
-        else {
+        } else {
             if (isNum) {
                 intStack.push(stoi(numberString));
                 isNum = false;
