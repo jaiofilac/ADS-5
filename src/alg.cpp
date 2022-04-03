@@ -32,7 +32,8 @@ std::string infx2pstfx(std::string inf) {
                 symbolStack.pop();
                 result += " ";
                 while ((priority(inf[i]) <= priority(symbolStack.get())
-                    || priority(symbolStack.get()) != 0) && !symbolStack.isEmpty()) {
+                    || priority(symbolStack.get()) != 0) 
+                    && !symbolStack.isEmpty()) {
                     result += " ";
                     result += symbolStack.get();
                     symbolStack.pop();
